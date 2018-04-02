@@ -1,9 +1,13 @@
 package com.imdb.topList.utils;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -18,12 +22,15 @@ public class BaseWebdriver {
 	@BeforeSuite(alwaysRun = true)
 	public void initializeDriver() {
 		setDriverPath();
-		
+
 	}
 
 	@BeforeMethod(alwaysRun = true)
 	public void print() {
-		driver = new ChromeDriver();
+		if (Configuration.getbrowser().equalsIgnoreCase("chrome"))
+			driver = new ChromeDriver();
+		else if (Configuration.getbrowser().equalsIgnoreCase("firefox"))
+			driver = new FirefoxDriver();
 		driver.get(Configuration.getUrl());
 		settingBrowser();
 	}
@@ -48,18 +55,39 @@ public class BaseWebdriver {
 	}
 
 	private void setDriverPath() {
+		if (Configuration.getbrowser().equalsIgnoreCase("chrome")) {
+			System.setProperty("webdriver.chrome.driver", getPlatform() + "/chromedriver");
+		}
+
+		else if (Configuration.getbrowser().equalsIgnoreCase("firefox")) {
+			System.setProperty("webdriver.gecko.driver", getPlatform() + "/geckodriver");
+		}
+
+		else {
+			System.out.println("Please check browser name provided. it should be eitehr firefox or chrome");
+			System.exit(1);
+		}
+
+	}
+
+	private Path getPlatform() {
+		ClassLoader classLoader = BaseWebdriver.class.getClassLoader();
+		Path resourceDirectory;
 		if (PlatformUtil.isMac()) {
-			System.setProperty("webdriver.chrome.driver", "chromedriver");
+			resourceDirectory = Paths.get("src", "main", "resources", "mac");
+			return resourceDirectory.toAbsolutePath();
 		} else if (PlatformUtil.isWindows()) {
-			System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+			resourceDirectory = Paths.get("src", "main", "resources", "windows");
+			return resourceDirectory.toAbsolutePath();
 		} else if (PlatformUtil.isLinux()) {
-			System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
+			resourceDirectory = Paths.get("src", "main", "resources", "linux");
+			return resourceDirectory.toAbsolutePath();
 		}
 
 		else
 			System.out.println("Platform should be one of these Mac/Windows/linux. Failed as test platform is :"
 					+ System.getProperty("os.name"));
-
+		return null;
 	}
 
 	public static WebDriver getDriver() {
