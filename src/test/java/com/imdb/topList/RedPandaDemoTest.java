@@ -9,13 +9,13 @@ import com.imdb.topList.utils.SqLiteDB;
 public class RedPandaDemoTest extends BaseWebdriver {
 
 	@Test(enabled = true,alwaysRun=true,priority=1)
-	public void testing() {
+	public void gettingAllRatitngs() {
 		LandingPage homePage = new LandingPage();
 		homePage.navigateToTopList().getAllList();
 	}
 
 	@Test(enabled = true, alwaysRun=true,priority=2)
-	public void testing1() {
+	public void printingAllResults() {
 		SqLiteDB.printResult();
 	}
 
