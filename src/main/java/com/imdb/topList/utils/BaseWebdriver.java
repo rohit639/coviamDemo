@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+
 import com.sun.javafx.PlatformUtil;
 
 public class BaseWebdriver {
@@ -17,11 +18,12 @@ public class BaseWebdriver {
 	@BeforeSuite(alwaysRun = true)
 	public void initializeDriver() {
 		setDriverPath();
-		driver = new ChromeDriver();
+		
 	}
 
 	@BeforeMethod(alwaysRun = true)
 	public void print() {
+		driver = new ChromeDriver();
 		driver.get(Configuration.getUrl());
 		settingBrowser();
 	}

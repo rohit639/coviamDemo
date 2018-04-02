@@ -40,7 +40,6 @@ public class TopRatingListPage extends BasePage {
 		SqLiteDB.createConnection();
 		SqLiteDB.creatTable();
 		saveIntoDB();
-		SqLiteDB.printResult();
 	}
 
 	private void saveIntoDB() {
