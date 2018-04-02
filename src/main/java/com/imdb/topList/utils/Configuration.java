@@ -7,11 +7,11 @@ import java.util.Properties;
 public class Configuration {
 
 	private final static Properties prop = new Properties();
+	private static final String configFile = "config.properties";
 	static {
 		try {
-			prop.load(new FileInputStream("config.properties"));
+			prop.load(new FileInputStream(configFile));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			System.out.println(e.toString());
 		}
 	}

@@ -44,7 +44,6 @@ public class FunctionLib {
 	public static boolean isAllElemntVisble(List<WebElement> webElements) {
 		try {
 			wait.until(ExpectedConditions.visibilityOfAllElements(webElements));
-			//wait.until(ExpectedConditions.titleIs(title))
 			return true;
 		} catch (ElementNotVisibleException e) {
 			System.out.println("Could not find visablity of all elements " + webElements + " " + e.getMessage());
@@ -54,14 +53,14 @@ public class FunctionLib {
 
 	public static boolean isTitlePresent(String title) {
 		try {
-		wait.until(ExpectedConditions.titleIs(title));
+			wait.until(ExpectedConditions.titleIs(title));
 			return true;
 		} catch (Exception e) {
 			System.out.println("Could not find title as provided : " + title + " " + e.getMessage());
 			return false;
 		}
 	}
-	
+
 	public static boolean selectBasedOnVisibleText(WebElement webElement, String visibleText) {
 		try {
 			assertTrue(isElemntVisble(webElement), "Failed to view select option");
@@ -87,8 +86,8 @@ public class FunctionLib {
 		}
 	}
 
-	public static String getToDayDate() {
-		final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d");
+	public static String getToDayDate(String format) {
+		final DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);
 		LocalDateTime now = LocalDateTime.now();
 		String todayDate = dtf.format(now);
 		return todayDate;
