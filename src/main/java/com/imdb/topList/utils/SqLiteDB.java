@@ -71,12 +71,21 @@ public class SqLiteDB {
 			resultSet = statement.executeQuery("select * from " + tableName);
 			ResultSetMetaData rsmd = resultSet.getMetaData();
 			int columnsNumber = rsmd.getColumnCount();
+			String line = new String(new char[130]).replace('\0', '-');
+			System.out.println(line);
+			System.out.format("|%-74S|","Movies-Name");
+			System.out.format("|%20S|","Year of release");
+			System.out.format("|%20S|","IMDB-Ratings");
+			System.out.println("\n"+line);
+			String s = null;
 			while (resultSet.next()) {
 
 				for (int i = 1; i <= columnsNumber; i++) {
-					if (i > 1)
-						System.out.print(" \t||\t ");
-					System.out.print(resultSet.getString(i) + " ");
+					if (i == 1)	
+					s = String.format("|%-74s|", resultSet.getString(i).trim());
+					else 
+						s = String.format("|%20s|", resultSet.getString(i).trim());
+					System.out.print(s);
 				}
 				System.out.println();
 
