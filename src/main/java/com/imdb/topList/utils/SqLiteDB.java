@@ -1,6 +1,7 @@
 package com.imdb.topList.utils;
 
 import java.io.File;
+
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
@@ -8,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.apache.log4j.Logger;
 
 public class SqLiteDB {
 
@@ -17,12 +20,14 @@ public class SqLiteDB {
 	private static ResultSet resultSet = null;
 	private static final String dbName = "imdbRatings.db";
 	private static final String tableName = "imdb";
+	private static final Logger logger =LoggerClass.createLogger();
 
 	public static Connection createConnection() {
 		try {
 			getConnection();
 			if (connection != null) {
 				DatabaseMetaData meta = connection.getMetaData();
+				logger.info("DataBase is created...");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -72,22 +77,25 @@ public class SqLiteDB {
 			ResultSetMetaData rsmd = resultSet.getMetaData();
 			int columnsNumber = rsmd.getColumnCount();
 			String line = new String(new char[130]).replace('\0', '-');
-			System.out.println(line);
-			System.out.format("|%-74S|","Movies-Name");
-			System.out.format("|%20S|","Year of release");
-			System.out.format("|%20S|","IMDB-Ratings");
-			System.out.println("\n"+line);
+			logger.info(line);
+			logger.info(String.format("|%-74S|","Movies-Name") + String.format("|%20S|","Year of release")+String.format("|%20S|","IMDB-Ratings"));
+			logger.info(line);
 			String s = null;
+			String s1 = null;
+			String s2 = null;
 			while (resultSet.next()) {
 
 				for (int i = 1; i <= columnsNumber; i++) {
 					if (i == 1)	
 					s = String.format("|%-74s|", resultSet.getString(i).trim());
-					else 
-						s = String.format("|%20s|", resultSet.getString(i).trim());
-					System.out.print(s);
+					else if(i==2)
+						s1 = String.format("|%20s|", resultSet.getString(i).trim());
+					else if(i==3)
+						s2 = String.format("|%20s|", resultSet.getString(i).trim());
+					
 				}
-				System.out.println();
+				logger.info(s+s1+s2);
+				
 
 			}
 		} catch (SQLException e) {

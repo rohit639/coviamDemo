@@ -1,24 +1,28 @@
 package com.imdb.topList.utils;
 
-import java.io.File;
+
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-
+import org.testng.annotations.Listeners;
 import com.sun.javafx.PlatformUtil;
 
+@Listeners(com.imdb.topList.utils.ListnersClass.class)
 public class BaseWebdriver {
 
 	public static WebDriver driver;
-
+	private static final Logger logger =LoggerClass.createLogger();
 	@BeforeSuite(alwaysRun = true)
 	public void initializeDriver() {
 		setDriverPath();
@@ -31,13 +35,22 @@ public class BaseWebdriver {
 			driver = new ChromeDriver();
 		else if (Configuration.getbrowser().equalsIgnoreCase("firefox"))
 			driver = new FirefoxDriver();
+		driver = registerEvents(driver);
+		
 		driver.get(Configuration.getUrl());
 		settingBrowser();
 	}
 
+	private WebDriver  registerEvents(WebDriver driver1) {
+		EventFiringWebDriver edriver = new EventFiringWebDriver(driver1);
+		ListnersClass listner = new ListnersClass();
+		edriver.register(listner);
+		return edriver;
+	}
+
 	@AfterMethod(alwaysRun = true)
 	public static void closeBrowser() {
-		System.out.println("Closeing Browser...");
+		logger.info("Closing Browser...");
 		driver.close();
 	}
 
