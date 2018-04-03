@@ -42,6 +42,23 @@
 			<systemPath>${basedir}\src\main\resources\sqlite-jdbc-3.21.0.jar</systemPath>
 		</dependency>
 	</dependencies>
+	
+	<reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.21.0</version>
+        <reportSets>
+					<reportSet>
+						<reports>
+							<report>report-only</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
 
 
 
