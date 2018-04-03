@@ -179,8 +179,10 @@ public class ListnersClass implements WebDriverEventListener,ITestListener{
 	}
 
 	public void onFinish(ITestContext context) {
-		
-		
+		String line = new String(new char[50]).replace('\0', '-');
+		logger.info(line);
+		logger.info(String.format("|%5S|","Total Passed")+String.format("|%5s|",context.getPassedTests().size())+String.format("|%5S|","Total Failed" ) +String.format("|%5s|",context.getFailedTests().size())+String.format("|%5S|","Total skippes")+String.format("|%5s|",context.getSkippedTests().size()));
+		logger.info(line);
 	}
 
 	public static String createScreenshot(WebDriver driver) {
