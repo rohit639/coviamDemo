@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
@@ -142,13 +143,17 @@ public class ListnersClass implements WebDriverEventListener,ITestListener{
 	}
 
 	public void onTestStart(ITestResult result) {
-		logger.info("Test case "+result.getName()+" about to start...");
+		String line = new String(new char[130]).replace('\0', '-');
+		logger.info("\n");
+		logger.info(line);
+		logger.info("Test case :-->  \""+result.getName()+"\"  <--: about to start...");
+		logger.info(line+"\n\n");
 		ExtendedReport.test = ExtendedReport.extent.createTest(result.getName());
 	}
 
 	public void onTestSuccess(ITestResult result) {
 		ExtendedReport.test.log(Status.PASS, "**passed**");
-		String line = new String(new char[100]).replace('\0', '-');
+		String line = new String(new char[120]).replace('\0', '-');
 		logger.info(line);
 		logger.info(String.format("|%30s|",result.getTestClass())+String.format("|%20s|",result.getName())+String.format("|%10S|", "passed"));
 		logger.info(line+"\n");
@@ -159,15 +164,15 @@ public class ListnersClass implements WebDriverEventListener,ITestListener{
 		Path resourceDirectory;
 		resourceDirectory = Paths.get("reports",screenShots);
 		
-		//ExtendedReport.htmlReporter.config().set
+		
 		try {
-			ExtendedReport.test.log(Status.FAIL, "fail");
-			ExtendedReport.test.fail(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(resourceDirectory.toString()).build());
+			ExtendedReport.test.log(Status.FAIL, result.getThrowable());
+			ExtendedReport.test.fail("*ScreenShot*", MediaEntityBuilder.createScreenCaptureFromPath(resourceDirectory.toString()).build());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String line = new String(new char[100]).replace('\0', '-');
+		String line = new String(new char[120]).replace('\0', '-');
 		logger.info(line);
 		logger.info(String.format("|%30s|",result.getTestClass())+String.format("|%20s|",result.getName())+String.format("|%10S|", "failed"));
 		logger.info(line+"\n");		
@@ -175,8 +180,8 @@ public class ListnersClass implements WebDriverEventListener,ITestListener{
 
 	public void onTestSkipped(ITestResult result) {
 		
-		
-		String line = new String(new char[100]).replace('\0', '-');
+		ExtendedReport.test.log(Status.SKIP, "**Skipped**");
+		String line = new String(new char[120]).replace('\0', '-');
 		logger.info(line);
 		logger.info(String.format("|%30s|",result.getTestClass())+String.format("|%20s|",result.getName())+String.format("|%10S|", "skipped"));
 		logger.info(line+"\n");
@@ -195,10 +200,12 @@ public class ListnersClass implements WebDriverEventListener,ITestListener{
 
 	public void onFinish(ITestContext context) {
 		ExtendedReport.extent.flush();
-		String line = new String(new char[50]).replace('\0', '-');
+		String line = new String(new char[80]).replace('\0', '-');
 		logger.info(line);
-		logger.info(String.format("|%5S|","Total Passed")+String.format("|%5s|",context.getPassedTests().size())+String.format("|%5S|","Total Failed" ) +String.format("|%5s|",context.getFailedTests().size())+String.format("|%5S|","Total skippes")+String.format("|%5s|",context.getSkippedTests().size()));
+		logger.info(StringUtils.center("|Total Number of Test cases Executed ||"+" "+context.getAllTestMethods().length+" ||", 80));
 		logger.info(line);
+		logger.info(String.format("|%5S|","Total Passed")+String.format("|%5s|",context.getPassedTests().size())+String.format("|%5S|","Total Failed" ) +String.format("|%5s|",context.getFailedTests().size())+String.format("|%5S|","Total skipped")+String.format("|%5s|",context.getSkippedTests().size()));
+		logger.info(line+"\n");
 	}
 
 	public static String createScreenshot(WebDriver driver) {
