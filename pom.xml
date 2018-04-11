@@ -10,6 +10,7 @@
 	<properties>
 		<selenium.version>3.11.0</selenium.version>
 		<testng.version>6.14.2</testng.version>
+		<compiler.version>1.8</compiler.version>
 		</properties>
 	<dependencies>
 		<dependency>
@@ -47,6 +48,44 @@
 </dependency>
 		
 	</dependencies>
+	
+	<build>
+		<directory>target</directory>
+		<outputDirectory>target/classes</outputDirectory>
+		<testOutputDirectory>target/classes</testOutputDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.3</version>
+					<configuration>
+						<source>${compiler.version}</source>
+						<target>${compiler.version}</target>
+						<compilerid>eclipse</compilerid>
+					</configuration>
+					</plugin>
+				
+					<!-- Following plugin executes the testng tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.21.0</version>
+                <configuration>
+                   <!--  Suite testng xml file to consider for test execution -->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+					</plugins>
+					</pluginManagement>
+					
+					
+					</build>
 	
 	<reporting>
     <plugins>
