@@ -12,7 +12,7 @@
          </run>         
       </groups>   
       <classes>
-         <class name = "com.coviam.demo.CoviamDemoTest" />
+         <class name = "com.coviam.demo.tests.CoviamDemoTest" />
       </classes>     
    </test>
    

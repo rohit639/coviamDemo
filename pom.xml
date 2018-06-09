@@ -6,8 +6,8 @@
 	<artifactId>coviam-Demo</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>redPanda-Demo</name>
-	<url>http://maven.apache.org</url>
+	<name>coviam-Demo</name>
+	<url>http://coviam.com/</url>
 	<properties>
 		<selenium.version>3.11.0</selenium.version>
 		<testng.version>6.14.2</testng.version>
