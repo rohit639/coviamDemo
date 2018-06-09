@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.ElementNotSelectableException;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchFrameException;
@@ -29,6 +30,16 @@ public class FunctionLib {
 		}
 	}
 
+	public static boolean isElemntclickable(WebElement webElement) {
+		try {
+			wait.until(ExpectedConditions.elementToBeClickable(webElement));
+			return true;
+		} catch (ElementClickInterceptedException e) {
+			System.out.println("Could not find visablity of element " + webElement + " " + e.getMessage());
+			return false;
+		}
+	}
+	
 	public static boolean isTextPresent(WebElement webElement, String textToValidate) {
 		try {
 			Assert.assertTrue(isElemntVisble(webElement), "Failed as element is not visiable ");
@@ -85,6 +96,8 @@ public class FunctionLib {
 			return false;
 		}
 	}
+	
+	
 
 	public static String getToDayDate(String format) {
 		final DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);

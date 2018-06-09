@@ -10,6 +10,8 @@ public class CoviamDemoTest extends BaseWebdriver {
 	@Test(enabled = true,alwaysRun=true,priority=1,groups= {"smokeTest","regression"})
 	public void gettingAllRatitngs() {
 		LandingPage homePage = new LandingPage();
+		homePage.navigateToWhoPage().navigateToWhatPage().navigateToHowPage().navigateToContactPage()
+		.navigateToCulturePage();
 		
 	}
 
