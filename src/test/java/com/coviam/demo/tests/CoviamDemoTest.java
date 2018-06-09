@@ -7,13 +7,15 @@ import com.coviam.demo.utils.BaseWebdriver;
 
 public class CoviamDemoTest extends BaseWebdriver {
 
-	@Test(enabled = true,alwaysRun=true,priority=1,groups= {"smokeTest","regression"})
+	@Test(enabled = true, alwaysRun = true, priority = 1, groups = { "smokeTest", "regression" })
 	public void gettingAllRatitngs() {
 		LandingPage homePage = new LandingPage();
-		homePage.navigateToWhoPage().navigateToWhatPage().navigateToHowPage().navigateToContactPage()
-		.navigateToCulturePage();
-		
+		// homePage.navigateToJobsPage().switchToWindow();
+		/*
+		 * .navigateToWhoPage().navigateToWhatPage().navigateToHowPage().
+		 * navigateToContactPage()
+		 * .navigateToChatPage().closeBot().navigateToCulturePage();
+		 */
 	}
 
-	
 }

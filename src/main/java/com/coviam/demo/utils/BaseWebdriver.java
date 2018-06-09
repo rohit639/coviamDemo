@@ -1,11 +1,11 @@
 package com.coviam.demo.utils;
 
-
-
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,7 +22,8 @@ import com.sun.javafx.PlatformUtil;
 public class BaseWebdriver {
 
 	public static WebDriver driver;
-	private static final Logger logger =LoggerClass.createLogger();
+	private static final Logger logger = LoggerClass.createLogger();
+
 	@BeforeSuite(alwaysRun = true)
 	public void initializeDriver() {
 		setDriverPath();
@@ -36,12 +37,12 @@ public class BaseWebdriver {
 		else if (Configuration.getbrowser().equalsIgnoreCase("firefox"))
 			driver = new FirefoxDriver();
 		driver = registerEvents(driver);
-		
+
 		driver.get(Configuration.getUrl());
 		settingBrowser();
 	}
 
-	private WebDriver  registerEvents(WebDriver driver1) {
+	private WebDriver registerEvents(WebDriver driver1) {
 		EventFiringWebDriver edriver = new EventFiringWebDriver(driver1);
 		ListnersClass listner = new ListnersClass();
 		edriver.register(listner);
@@ -58,6 +59,18 @@ public class BaseWebdriver {
 	public static void closeWebDriver() {
 		if (driver != null)
 			driver.quit();
+		openGenratedReports();
+
+	}
+
+	private static void openGenratedReports() {
+		File file = new File(Configuration.getHtmlreportname());
+		try {
+			Desktop.getDesktop().browse(file.toURI());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private static void settingBrowser() {
