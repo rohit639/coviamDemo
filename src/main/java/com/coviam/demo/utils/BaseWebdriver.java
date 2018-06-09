@@ -1,4 +1,4 @@
-package com.imdb.topList.utils;
+package com.coviam.demo.utils;
 
 
 
@@ -18,7 +18,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import com.sun.javafx.PlatformUtil;
 
-@Listeners(com.imdb.topList.utils.ListnersClass.class)
+@Listeners(com.coviam.demo.utils.ListnersClass.class)
 public class BaseWebdriver {
 
 	public static WebDriver driver;

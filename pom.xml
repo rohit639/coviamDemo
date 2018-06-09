@@ -1,8 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.imdb.topList</groupId>
-	<artifactId>redPanda-Demo</artifactId>
+	<groupId>com.coviam.Demo</groupId>
+	<artifactId>coviam-Demo</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>redPanda-Demo</name>
@@ -11,7 +12,7 @@
 		<selenium.version>3.11.0</selenium.version>
 		<testng.version>6.14.2</testng.version>
 		<compiler.version>1.8</compiler.version>
-		</properties>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -19,37 +20,24 @@
 			<version>${testng.version}</version>
 		</dependency>
 		<dependency>
-    <groupId>log4j</groupId>
-    <artifactId>log4j</artifactId>
-    <version>1.2.17</version>
-	</dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
 			<version>${selenium.version}</version>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.xerial</groupId>
-			<artifactId>sqlite-jdbc</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}\src\main\resources\sqlite-jdbc-3.21.0.jar</systemPath>
-		</dependency> -->
 		<dependency>
-			<groupId>org.xerial</groupId>
-			<artifactId>sqlite-jdbc</artifactId>
-			<version>3.21.0.1</version>
-			<scope>compile</scope>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>3.1.5</version>
 		</dependency>
-		<dependency>
-    <groupId>com.aventstack</groupId>
-    <artifactId>extentreports</artifactId>
-    <version>3.1.5</version>
-</dependency>
-		
+
 	</dependencies>
-	
-	<build>	
+
+	<build>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -61,42 +49,20 @@
 						<target>${compiler.version}</target>
 						<compilerid>eclipse</compilerid>
 					</configuration>
-					</plugin>
-					<!-- Following plugin executes the testng tests -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.21.0</version>
-                <configuration>
-                   <!--  Suite testng xml file to consider for test execution -->
-                    <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
-                </configuration>
-            </plugin>
-					</plugins>
-					</pluginManagement>
-					
-					
-					</build>
-	
-	<reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>2.21.0</version>
-        <reportSets>
-					<reportSet>
-						<reports>
-							<report>report-only</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-      </plugin>
-    </plugins>
-  </reporting>
-
-
-
+				</plugin>
+				<!-- Following plugin executes the testng tests -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.21.0</version>
+					<configuration>
+						<!-- Suite testng xml file to consider for test execution -->
+						<suiteXmlFiles>
+							<suiteXmlFile>testng.xml</suiteXmlFile>
+						</suiteXmlFiles>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>

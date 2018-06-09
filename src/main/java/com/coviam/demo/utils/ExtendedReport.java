@@ -1,4 +1,4 @@
-package com.imdb.topList.utils;
+package com.coviam.demo.utils;
 
 import java.io.File;
 
@@ -8,7 +8,7 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 public class ExtendedReport {
 
-	public static final ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(new File(System.getProperty("user.dir")+"/redPanda-Demo.html"));
+	public static final ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(new File(System.getProperty("user.dir")+"/coviam-Demo.html"));
 	public static final ExtentReports extent = new ExtentReports();
 	public static ExtentTest test;
 	

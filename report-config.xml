@@ -14,10 +14,10 @@
         <protocol>https</protocol>
         
         <!-- title of the document -->
-        <documentTitle>redPand-Demo</documentTitle>
+        <documentTitle>coviam-Demo</documentTitle>
         
         <!-- report name - displayed at top-nav -->
-        <reportName>redPanda-Automation Report</reportName>
+        <reportName>Coviam-Automation Report</reportName>
         
         <!-- location of charts in the test view -->
         <!-- top, bottom -->

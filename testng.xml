@@ -12,7 +12,7 @@
          </run>         
       </groups>   
       <classes>
-         <class name = "com.imdb.topList.RedPandaDemoTest" />
+         <class name = "com.coviam.demo.CoviamDemoTest" />
       </classes>     
    </test>
    

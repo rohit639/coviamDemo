@@ -1,4 +1,4 @@
-package com.imdb.topList.utils;
+package com.coviam.demo.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,7 +16,7 @@ import org.apache.log4j.PropertyConfigurator;
 public class LoggerClass {
 
 	private static Logger logger;
-	private static final String fileName = "redPandaLogger";
+	private static final String fileName = "coviamDemoLogger";
 	private static final String dateAndTimeFormat = "MM-dd-yyyy_hh.mm.ss";
 	private static final String logProperttFilePath = "/src/main/resources/log4j.properties";
 	

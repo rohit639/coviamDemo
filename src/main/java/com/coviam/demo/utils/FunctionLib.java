@@ -1,4 +1,4 @@
-package com.imdb.topList.utils;
+package com.coviam.demo.utils;
 
 import static org.testng.Assert.assertTrue;
 
