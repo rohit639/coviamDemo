@@ -7,7 +7,7 @@ import com.coviam.demo.utils.FunctionLib;
 
 public class LandingPage extends BasePage {
 
-	private static final String title = "nCoviam Technologies - Innovate Digital | Innovative Technology Startup, Bangalore";
+	private static final String title = "Coviam Technologies - Innovate Digital | Innovative Technology Startup, Bangalore";
 
 	public LandingPage() {
 		PageFactory.initElements(BaseWebdriver.getDriver(), this);
