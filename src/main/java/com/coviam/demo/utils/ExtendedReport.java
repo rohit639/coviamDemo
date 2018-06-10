@@ -8,7 +8,7 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 public class ExtendedReport {
  
-	public static final ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(new File(Configuration.getHtmlreportname()));
+	public static final ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter(new File(Configuration.getAppName()+".html"));
 	public static final ExtentReports extent = new ExtentReports();
 	public static ExtentTest test;
 	

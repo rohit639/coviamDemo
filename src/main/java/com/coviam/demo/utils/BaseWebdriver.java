@@ -64,7 +64,7 @@ public class BaseWebdriver {
 	}
 
 	private static void openGenratedReports() {
-		File file = new File(Configuration.getHtmlreportname());
+		File file = new File(Configuration.getAppName()+".html");
 		try {
 			Desktop.getDesktop().browse(file.toURI());
 		} catch (IOException e) {

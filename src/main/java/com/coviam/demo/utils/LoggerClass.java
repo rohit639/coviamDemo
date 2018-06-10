@@ -22,7 +22,7 @@ public class LoggerClass {
 
 		try {
 			String dateTime = getFormattedCurrentDateAndTime(dateAndTimeFormat);
-			String FileName = Configuration.getLogger() + "-" + dateTime + ".log";
+			String FileName = Configuration.getAppName() + "-" + dateTime + ".log";
 			Properties props = new Properties();
 			System.out.println(System.getProperty("user.dir"));
 			props.load(new FileInputStream(System.getProperty("user.dir") + logProperttFilePath));

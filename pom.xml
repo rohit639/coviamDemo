@@ -79,4 +79,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<description>This Project is meant only for demo purpose</description>
 </project>

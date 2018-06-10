@@ -18,12 +18,11 @@ public class Configuration {
 
 	private final static String url = getProperties("url");
 	private final static String browser = getProperties("browser");
-	private final static String htmlReportName = getProperties("htmlReportName");
+	private final static String appName = getProperties("AppName");
 	private final static int implicit = Integer.parseInt(getProperties("implicit"));
 	private final static int pageLoad = Integer.parseInt(getProperties("pageLoad"));
 	private final static int explicit = Integer.parseInt(getProperties("explicit"));
 	private final static int script = Integer.parseInt(getProperties("script"));
-	private final static String loggerName = getProperties("logName");
 	
 	
 	public static String getbrowser() {
@@ -54,12 +53,8 @@ public class Configuration {
 		return explicit;
 	}
 	
-	public static String getHtmlreportname() {
-		return htmlReportName;
-	}
-	
-	public static String getLogger() {
-		return loggerName;
+	public static String getAppName() {
+		return appName;
 	}
 
 }
