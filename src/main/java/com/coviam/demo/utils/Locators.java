@@ -21,6 +21,7 @@ public class Locators {
 
 	public class JobsPageLocators {
 		public static final String location = "location";
+		public static final String homeLogoJobsPage = "logo";
 	}
 
 	public class LandingPageLocators {

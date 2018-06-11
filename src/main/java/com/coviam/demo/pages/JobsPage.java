@@ -15,26 +15,31 @@ public class JobsPage extends BasePage {
 
 	@FindBy(className = Locators.JobsPageLocators.location)
 	private List<WebElement> loctionElmnt;
+	
+	@FindBy(id = Locators.JobsPageLocators.homeLogoJobsPage)
+	private WebElement logoElmnt;
+	
+	
 
-	private static final String title = "Talent @ Coviam &#8211; Coviam Technologies";
+	private static final String url = "http://talent.coviam.com/";
 
 	public JobsPage() {
 		PageFactory.initElements(BaseWebdriver.getDriver(), this);
-		Assert.assertTrue(FunctionLib.isTitlePresent(title),
-				"Failed as title is not same as provided for test : " + title + " on page " + this);
+		switchToJobs();
 	}
 
-	public JobsPage switchToWindow() {
+	public BasePage switchToJobs() {
 		final String mainPage = BaseWebdriver.getDriver().getWindowHandle();
 		for (String window : BaseWebdriver.getDriver().getWindowHandles()) {
 			BaseWebdriver.getDriver().switchTo().window(window);
-			if (BaseWebdriver.getDriver().getTitle().equalsIgnoreCase(title)) {
+			if (BaseWebdriver.getDriver().getCurrentUrl().equalsIgnoreCase(url)) {
+				Assert.assertTrue(FunctionLib.isElemntVisble(logoElmnt),"Failed as could not Validate logo in Jobs page");
 				Assert.assertTrue(verifyLocatoionBangalore(), "Failed to verify location Bangalore in Jobs portal");
 				BaseWebdriver.closeBrowser();
 				BaseWebdriver.getDriver().switchTo().window(mainPage);
 			}
 		}
-		return this;
+		return new BasePage();
 	}
 
 	private boolean verifyLocatoionBangalore() {
