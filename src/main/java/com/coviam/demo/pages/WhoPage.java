@@ -6,12 +6,14 @@ import com.coviam.demo.utils.BaseWebdriver;
 import com.coviam.demo.utils.FunctionLib;
 
 public class WhoPage extends BasePage {
-	
-	public static final String pageValidation ="Our Team";
-	
+
+	public static final String pageValidation = "Our Team";
+
 	public WhoPage() {
 		PageFactory.initElements(BaseWebdriver.getDriver(), this);
-		Assert.assertTrue(FunctionLib.isTextPresent(pageValidationElmnt, pageValidation), "Failed to validate page who as \"Our Team\" is not visable");
+		Assert.assertTrue(FunctionLib.isTextPresent(pageValidationElmnt, pageValidation),
+				"Failed to validate page as \"Our Team\" is not visable Page and url to page is "
+						+ BaseWebdriver.getDriver().getCurrentUrl());
 	}
 
 }

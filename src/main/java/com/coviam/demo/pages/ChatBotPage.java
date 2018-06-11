@@ -16,26 +16,26 @@ public class ChatBotPage extends BasePage {
 
 	@FindBy(className = Locators.ChatBotPageLocators.title)
 	WebElement titleElnmt;
-	
+
 	@FindBy(className = Locators.ChatBotPageLocators.ChatBOtImge)
 	WebElement chatBotImg;
-
 
 	public ChatBotPage() {
 		PageFactory.initElements(BaseWebdriver.getDriver(), this);
 		Assert.assertTrue(FunctionLib.isTextPresent(titleElnmt, pageValidation),
-				"Failed to validate page chat-bot as \"Coviam Technologies\" is not visable");
+				"Failed to validate page as \"Coviam Technologies\" is not visable on ChatBot");
 	}
 
 	public BasePage closeBot() {
 		Assert.assertTrue(FunctionLib.isElemntVisble(chatBotImg),
-				"failed not wait for chat bot image on element : chat bot" );
+				"failed not wait for chat bot image on element : chat bot");
 		Assert.assertTrue(FunctionLib.isElemntclickable(closeBotElmnt),
 				"failed not click on element : " + closeBotElmnt.getText());
-		((JavascriptExecutor) BaseWebdriver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", closeBotElmnt);
+		((JavascriptExecutor) BaseWebdriver.getDriver()).executeScript("arguments[0].scrollIntoView(true);",
+				closeBotElmnt);
 		((JavascriptExecutor) BaseWebdriver.getDriver()).executeScript("arguments[0].click();", closeBotElmnt);
 		// Not working with firefox so simply used javascript
-		//closeBotElmnt.click(); 
+		// closeBotElmnt.click();
 		return new BasePage();
 	}
 

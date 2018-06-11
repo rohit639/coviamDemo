@@ -8,11 +8,13 @@ import com.coviam.demo.utils.FunctionLib;
 
 public class HowPage extends BasePage {
 
-public static final String pageValidation ="Coviation";
-	
+	public static final String pageValidation = "Coviation";
+
 	public HowPage() {
 		PageFactory.initElements(BaseWebdriver.getDriver(), this);
-		Assert.assertTrue(FunctionLib.isTextPresent(pageValidationElmnt, pageValidation), "Failed to validate page What as \"Coviation\" is not visable");
+		Assert.assertTrue(FunctionLib.isTextPresent(pageValidationElmnt, pageValidation),
+				"Failed to validate page as \"Coviation\" is not visable on How Page and url to page is "
+						+ BaseWebdriver.getDriver().getCurrentUrl());
 	}
-	
+
 }

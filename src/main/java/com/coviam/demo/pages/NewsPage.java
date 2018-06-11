@@ -10,14 +10,14 @@ import com.coviam.demo.utils.Locators;
 
 public class NewsPage extends BasePage {
 
-	@FindBy(id=Locators.NewsPageLocators.homeLogoNewsPage)
+	@FindBy(id = Locators.NewsPageLocators.homeLogoNewsPage)
 	private WebElement newsLogoElmnt;
-	
+
 	private static final String url = "http://news.coviam.com/";
-	
+
 	public NewsPage() {
 		PageFactory.initElements(BaseWebdriver.getDriver(), this);
-		Assert.assertTrue(switchToWindow(url,newsLogoElmnt),"Failed as could not switch to News Page");
+		Assert.assertTrue(switchToWindow(url, newsLogoElmnt), "Failed as could not switch to News Page");
 	}
 
 }

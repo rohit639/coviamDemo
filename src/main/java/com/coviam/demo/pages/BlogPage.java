@@ -10,15 +10,15 @@ import com.coviam.demo.utils.Locators;
 
 public class BlogPage extends BasePage {
 
-	@FindBy(className=Locators.BlogPageLocators.homeLogoBlogPage)
+	@FindBy(className = Locators.BlogPageLocators.homeLogoBlogPage)
 	private WebElement blogLogoElmnt;
-	
+
 	private static final String url = "http://blog.coviam.com/";
-	
+
 	public BlogPage() {
 		PageFactory.initElements(BaseWebdriver.getDriver(), this);
-		Assert.assertTrue(switchToWindow(url,blogLogoElmnt),"Failed as could not switch to blog page");
-		
+		Assert.assertTrue(switchToWindow(url, blogLogoElmnt), "Failed as could not switch to blog page");
+
 	}
 
 }

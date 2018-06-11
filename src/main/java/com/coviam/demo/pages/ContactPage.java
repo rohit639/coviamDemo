@@ -8,11 +8,13 @@ import com.coviam.demo.utils.FunctionLib;
 
 public class ContactPage extends BasePage {
 
-	private static final String pageValidation ="Get In Touch";
-	
+	private static final String pageValidation = "Get In Touch";
+
 	public ContactPage() {
 		PageFactory.initElements(BaseWebdriver.getDriver(), this);
-		Assert.assertTrue(FunctionLib.isTextPresent(pageValidationElmnt, pageValidation), "Failed to validate page Contact as \"Get In Touch\" is not visable");
+		Assert.assertTrue(FunctionLib.isTextPresent(pageValidationElmnt, pageValidation),
+				"Failed to validate page Contact as \"Get In Touch\" is not visable on Contact Page and url to page is "
+						+ BaseWebdriver.getDriver().getCurrentUrl());
 	}
 
 }

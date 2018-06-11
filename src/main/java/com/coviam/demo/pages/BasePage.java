@@ -50,7 +50,7 @@ public class BasePage {
 
 	@FindBy(id = Locators.BasePageLocators.ChatBOtClose)
 	WebElement closeBotElmnt;
-	
+
 	protected static final Logger logger = LoggerClass.createLogger();
 
 	public BasePage() {
@@ -99,21 +99,21 @@ public class BasePage {
 		jobsElmnt.click();
 		return new JobsPage();
 	}
-	
+
 	public BlogPage navigateToBlogPage() {
 		Assert.assertTrue(FunctionLib.isElemntclickable(blogElmnt),
 				"failed not click on element : " + blogElmnt.getText());
 		blogElmnt.click();
 		return new BlogPage();
-	
+
 	}
-	
+
 	public NewsPage navigateToNewsPage() {
 		Assert.assertTrue(FunctionLib.isElemntclickable(newsElmnt),
 				"failed not click on element : " + blogElmnt.getText());
 		newsElmnt.click();
 		return new NewsPage();
-	
+
 	}
 
 	public CulturePage navigateToCulturePage() {
@@ -129,27 +129,28 @@ public class BasePage {
 				"failed not click on element : " + careerElmnt.getText());
 		careerElmnt.click();
 	}
-	
+
 	public BasePage NavigateToMainWindow(String pageName) {
 		BaseWebdriver.closeBrowser();
 		BaseWebdriver.getDriver().switchTo().window(pageName);
 		return new BasePage();
 	}
-	
-	public boolean switchToWindow(String url,WebElement verifyElement) {
+
+	public boolean switchToWindow(String url, WebElement verifyElement) {
 		final String mainPage = BaseWebdriver.getDriver().getWindowHandle();
 		int counter = 0;
+		System.out.println("Windows Size is "+BaseWebdriver.getDriver().getWindowHandles().size());
 		for (String window : BaseWebdriver.getDriver().getWindowHandles()) {
 			BaseWebdriver.getDriver().switchTo().window(window);
+			System.out.println("URL looking for is : "+url+" & getting title as "+BaseWebdriver.getDriver().getCurrentUrl());
 			if (BaseWebdriver.getDriver().getCurrentUrl().equalsIgnoreCase(url)) {
 				counter++;
-				System.out.println("URL looking for is : "+url+" & getting title as "+BaseWebdriver.getDriver().getCurrentUrl());
 				Assert.assertTrue(FunctionLib.isElemntVisble(verifyElement),
-						"Failed as element is not visable : " + verifyElement.getText() + " on page ");
+						"Failed as element is not visable : " + verifyElement.getText() + " on URL "+url);
 				NavigateToMainWindow(mainPage);
-				}
+			}
 		}
-		Assert.assertEquals(1, counter,"Failed as could not find URL :"+url+" to switch and validate page");
+		Assert.assertEquals(1, counter, "Failed as could not find URL :" + url + " to switch and validate page");
 		return true;
 	}
 

@@ -9,7 +9,9 @@ public class LandingPage extends BasePage {
 
 	public LandingPage() {
 		PageFactory.initElements(BaseWebdriver.getDriver(), this);
-		Assert.assertTrue(FunctionLib.isElemntVisble(homeLogo), "Failed as home logo is not visiable on the screen");
+		Assert.assertTrue(FunctionLib.isElemntVisble(homeLogo),
+				"Failed as home logo is not visiable on Landing/Home Page and url to page is "
+						+ BaseWebdriver.getDriver().getCurrentUrl());
 	}
 
 }
