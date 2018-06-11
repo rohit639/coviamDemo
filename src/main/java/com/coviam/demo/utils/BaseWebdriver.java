@@ -57,7 +57,7 @@ public class BaseWebdriver {
 
 	@AfterSuite(alwaysRun = true)
 	public static void closeWebDriver() {
-		if (driver != null)
+		if (driver != null & !Configuration.getbrowser().equalsIgnoreCase("firefox"))
 			driver.quit();
 		openGenratedReports();
 
@@ -77,6 +77,7 @@ public class BaseWebdriver {
 		getDriver().manage().timeouts().implicitlyWait(Configuration.getImplicit(), TimeUnit.MINUTES);
 		getDriver().manage().timeouts().pageLoadTimeout(Configuration.getPageload(), TimeUnit.MINUTES);
 		getDriver().manage().timeouts().setScriptTimeout(Configuration.getScript(), TimeUnit.SECONDS);
+		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
 	}
 

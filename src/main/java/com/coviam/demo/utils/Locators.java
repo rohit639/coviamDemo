@@ -27,7 +27,28 @@ public class Locators {
 	}
 
 	public class ChatBotPageLocators {
+		public static final String ChatBOtImge = "engt-scale-img";
 		public static final String title = "engt-sheet-header-title-text";
 	}
 
+	public class WhatPageLocators{
+		public static final String engati = "//img[@src='img/product_logo/Engati_logo_black.png']";
+		public static final String autoMI = "//img[@src='img/product_logo/automi_logo_testing-automation.png']";
+	}
+	
+	public class EngatiBoltPageLocators {
+		public static final String homeLogoEngatiPage = "_image2";
+	}
+	
+	public class AutoMiPageLocators {
+		public static final String homeLogoAutoMiPage = "navbar-brand";
+	}
+	
+	public class BlogPageLocators {
+		public static final String homeLogoBlogPage = "site-logo";
+	}
+	
+	public class NewsPageLocators {
+		public static final String homeLogoNewsPage = "logo";
+	}
 }

@@ -16,7 +16,6 @@ public class JobsPage extends BasePage {
 	@FindBy(className = Locators.JobsPageLocators.location)
 	private List<WebElement> loctionElmnt;
 
-	private static final String pageValidation = "INNOVATE\n" + "DIGITAL";
 	private static final String title = "Talent @ Coviam &#8211; Coviam Technologies";
 
 	public JobsPage() {

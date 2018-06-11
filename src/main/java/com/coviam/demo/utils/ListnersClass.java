@@ -131,7 +131,6 @@ public class ListnersClass implements WebDriverEventListener, ITestListener {
 	}
 
 	public void beforeSwitchToWindow(String arg0, WebDriver arg1) {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -226,6 +225,18 @@ public class ListnersClass implements WebDriverEventListener, ITestListener {
 		}
 		logger.info("imageLocation + uuid + .png : " + imageLocation + uuid + ".png");
 		return imageLocation + uuid + ".png";
+	}
+
+	@Override
+	public <X> void afterGetScreenshotAs(OutputType<X> arg0, X arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public <X> void beforeGetScreenshotAs(OutputType<X> arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.coviam.demo.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -15,6 +16,10 @@ public class ChatBotPage extends BasePage {
 
 	@FindBy(className = Locators.ChatBotPageLocators.title)
 	WebElement titleElnmt;
+	
+	@FindBy(className = Locators.ChatBotPageLocators.ChatBOtImge)
+	WebElement chatBotImg;
+
 
 	public ChatBotPage() {
 		PageFactory.initElements(BaseWebdriver.getDriver(), this);
@@ -23,9 +28,14 @@ public class ChatBotPage extends BasePage {
 	}
 
 	public BasePage closeBot() {
+		Assert.assertTrue(FunctionLib.isElemntVisble(chatBotImg),
+				"failed not wait for chat bot image on element : chat bot" );
 		Assert.assertTrue(FunctionLib.isElemntclickable(closeBotElmnt),
 				"failed not click on element : " + closeBotElmnt.getText());
-		closeBotElmnt.click();
+		((JavascriptExecutor) BaseWebdriver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", closeBotElmnt);
+		((JavascriptExecutor) BaseWebdriver.getDriver()).executeScript("arguments[0].click();", closeBotElmnt);
+		// Not working with firefox so simply used javascript
+		//closeBotElmnt.click(); 
 		return new BasePage();
 	}
 
