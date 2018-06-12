@@ -14,6 +14,8 @@ public class ExtendedReport {
 	
 	static {
 		htmlReporter.loadXMLConfig(new File(System.getProperty("user.dir")+"/report-config.xml"));
+		htmlReporter.config().setDocumentTitle(Configuration.getAppName()+"-Automation Report");
+		htmlReporter.config().setReportName(Configuration.getAppName()+" -- Test Cases Execution Result");
 		htmlReporter.setAppendExisting(false);
 		extent.attachReporter(htmlReporter);
 	}
