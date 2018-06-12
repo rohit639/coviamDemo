@@ -30,15 +30,18 @@ public class JobsPage extends BasePage {
 
 	public BasePage switchToJobs() {
 		final String mainPage = BaseWebdriver.getDriver().getWindowHandle();
+		int counter =1;
 		for (String window : BaseWebdriver.getDriver().getWindowHandles()) {
 			BaseWebdriver.getDriver().switchTo().window(window);
 			if (BaseWebdriver.getDriver().getCurrentUrl().equalsIgnoreCase(url)) {
+				counter++;
 				Assert.assertTrue(FunctionLib.isElemntVisble(logoElmnt),"Failed as could not Validate logo in Jobs page");
 				Assert.assertTrue(verifyLocatoionBangalore(), "Failed to verify location Bangalore in Jobs portal");
 				BaseWebdriver.closeBrowser();
 				BaseWebdriver.getDriver().switchTo().window(mainPage);
 			}
 		}
+		Assert.assertEquals(2, counter, "Failed as could not find URL :" + url + " to switch and validate page");
 		return new BasePage();
 	}
 

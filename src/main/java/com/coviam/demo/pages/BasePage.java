@@ -138,7 +138,7 @@ public class BasePage {
 
 	public boolean switchToWindow(String url, WebElement verifyElement) {
 		final String mainPage = BaseWebdriver.getDriver().getWindowHandle();
-		int counter = 0;
+		int counter = 1;
 		System.out.println("Windows Size is "+BaseWebdriver.getDriver().getWindowHandles().size());
 		for (String window : BaseWebdriver.getDriver().getWindowHandles()) {
 			BaseWebdriver.getDriver().switchTo().window(window);
@@ -150,7 +150,7 @@ public class BasePage {
 				NavigateToMainWindow(mainPage);
 			}
 		}
-		Assert.assertEquals(1, counter, "Failed as could not find URL :" + url + " to switch and validate page");
+		Assert.assertEquals(2, counter, "Failed as could not find URL :" + url + " to switch and validate page");
 		return true;
 	}
 
