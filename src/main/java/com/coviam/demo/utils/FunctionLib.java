@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.ElementNotSelectableException;
 import org.openqa.selenium.ElementNotVisibleException;
@@ -20,13 +21,13 @@ import org.testng.Assert;
 public class FunctionLib {
 
 	private final static WebDriverWait wait = new WebDriverWait(BaseWebdriver.getDriver(), Configuration.getExplicit());
-
+	private static final Logger logger = LoggerClass.createLogger();
 	public static boolean isElemntVisble(WebElement webElement) {
 		try {
 			wait.until(ExpectedConditions.visibilityOf(webElement));
 			return true;
 		} catch (ElementNotVisibleException e) {
-			System.out.println("Could not find visablity of element " + webElement + " " + e.getMessage());
+			logger.info("Could not find visablity of element " + webElement + " " + e.getMessage());
 			return false;
 		}
 	}
@@ -36,7 +37,7 @@ public class FunctionLib {
 			wait.until(ExpectedConditions.elementToBeClickable(webElement));
 			return true;
 		} catch (ElementClickInterceptedException e) {
-			System.out.println("Could not find visablity of element " + webElement + " " + e.getMessage());
+			logger.info("Could not find visablity of element " + webElement + " " + e.getMessage());
 			return false;
 		}
 	}
@@ -47,7 +48,7 @@ public class FunctionLib {
 			wait.until(ExpectedConditions.textToBePresentInElement(webElement, textToValidate));
 			return true;
 		} catch (Exception e) {
-			System.out.println("Could not find Text " + textToValidate + " of element " + ". But found "
+			logger.info("Could not find Text " + textToValidate + " of element " + ". But found "
 					+ webElement.getText() + " " + e.getMessage());
 			return false;
 		}
@@ -58,7 +59,7 @@ public class FunctionLib {
 			wait.until(ExpectedConditions.visibilityOfAllElements(webElements));
 			return true;
 		} catch (ElementNotVisibleException e) {
-			System.out.println("Could not find visablity of all elements " + webElements + " " + e.getMessage());
+			logger.info("Could not find visablity of all elements " + webElements + " " + e.getMessage());
 			return false;
 		}
 	}
@@ -68,7 +69,7 @@ public class FunctionLib {
 			wait.until(ExpectedConditions.titleIs(title));
 			return true;
 		} catch (Exception e) {
-			System.out.println("Could not find title as provided : " + title + " " + e.getMessage());
+			logger.info("Could not find title as provided : " + title + " " + e.getMessage());
 			return false;
 		}
 	}
@@ -81,7 +82,7 @@ public class FunctionLib {
 			return true;
 
 		} catch (ElementNotSelectableException e) {
-			System.out.println("Failed to select due to " + e.toString());
+			logger.info("Failed to select due to " + e.toString());
 			return false;
 		}
 	}
@@ -93,7 +94,7 @@ public class FunctionLib {
 			return true;
 
 		} catch (NoSuchFrameException e) {
-			System.out.println("Failed to switch to frame as  " + e.toString());
+			logger.info("Failed to switch to frame as  " + e.toString());
 			return false;
 		}
 	}

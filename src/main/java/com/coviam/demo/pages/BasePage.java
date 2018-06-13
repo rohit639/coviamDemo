@@ -139,7 +139,6 @@ public class BasePage {
 	public boolean switchToWindow(String url, WebElement verifyElement) {
 		final String mainPage = BaseWebdriver.getDriver().getWindowHandle();
 		int counter = 1;
-		System.out.println("Windows Size is "+BaseWebdriver.getDriver().getWindowHandles().size());
 		for (String window : BaseWebdriver.getDriver().getWindowHandles()) {
 			BaseWebdriver.getDriver().switchTo().window(window);
 			FunctionLib.javaScriptToWaitForPage();
