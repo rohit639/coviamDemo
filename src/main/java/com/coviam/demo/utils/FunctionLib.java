@@ -9,6 +9,7 @@ import java.util.List;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.ElementNotSelectableException;
 import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -97,7 +98,13 @@ public class FunctionLib {
 		}
 	}
 	
-	
+	public static void javaScriptToWaitForPage() {
+		String pageLoadStatus;
+		do {
+			JavascriptExecutor js = (JavascriptExecutor) BaseWebdriver.getDriver();
+			pageLoadStatus = (String) js.executeScript("return document.readyState");
+		} while (!pageLoadStatus.endsWith("complete"));
+	}
 
 	public static String getToDayDate(String format) {
 		final DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);

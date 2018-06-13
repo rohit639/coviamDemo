@@ -33,6 +33,7 @@ public class JobsPage extends BasePage {
 		int counter =1;
 		for (String window : BaseWebdriver.getDriver().getWindowHandles()) {
 			BaseWebdriver.getDriver().switchTo().window(window);
+			FunctionLib.javaScriptToWaitForPage();
 			if (BaseWebdriver.getDriver().getCurrentUrl().equalsIgnoreCase(url)) {
 				counter++;
 				Assert.assertTrue(FunctionLib.isElemntVisble(logoElmnt),"Failed as could not Validate logo in Jobs page");

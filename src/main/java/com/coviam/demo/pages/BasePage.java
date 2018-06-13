@@ -142,7 +142,7 @@ public class BasePage {
 		System.out.println("Windows Size is "+BaseWebdriver.getDriver().getWindowHandles().size());
 		for (String window : BaseWebdriver.getDriver().getWindowHandles()) {
 			BaseWebdriver.getDriver().switchTo().window(window);
-			
+			FunctionLib.javaScriptToWaitForPage();
 			if (BaseWebdriver.getDriver().getCurrentUrl().equalsIgnoreCase(url)) {
 				counter++;
 				Assert.assertTrue(FunctionLib.isElemntVisble(verifyElement),
