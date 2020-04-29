@@ -5,7 +5,8 @@ This Project is made only for demo purpose.
 > Report will open automatically for Windows & Mac, when **localSlow** is enabled.
 > Parameter **timeToSlow** can be enabled if the reviewer want to slow the process and verify each steps.
 > If **localSlow** is enabled then on completion of automation, local report will be automatically generated. This is to avoid Allure reports in local.
-> created small .sh file to run scripts
+
+> created small .sh file to run scripts and start 
 ```
 sh run_testng_xml.sh xmlFileName.xml
 ```
@@ -68,5 +69,3 @@ mvn clean install -Dbrowser=chrome
     ```
     allure serve
     ```
-
-## Options to pass parameters
